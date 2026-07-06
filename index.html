@@ -292,13 +292,13 @@ footer{background:#111;color:rgba(255,255,255,.58);padding:48px 56px 28px}
   <div class="quote-form">
     <div class="qf">
       <label data-lang-inline="zh">从哪里搬出</label><label data-lang-inline="en">Moving From</label><label data-lang-inline="ko">출발지</label><label data-lang-inline="vi">Nơi đi</label>
-      <div class="sw"><select id="qFrom"><option>Brisbane</option><option>Sydney</option><option>Melbourne</option><option>Gold Coast</option></select></div>
+      <div class="sw"><select id="qFrom"><option>Brisbane</option><option>Gold Coast</option></select></div>
     </div>
     <div class="qf">
       <label data-lang-inline="zh">搬到哪里</label><label data-lang-inline="en">Moving To</label><label data-lang-inline="ko">목적지</label><label data-lang-inline="vi">Nơi đến</label>
-      <div class="sw"><select id="qTo"><option>Brisbane</option><option>Sydney</option><option>Melbourne</option><option>Gold Coast</option></select></div>
+      <div class="sw"><select id="qTo"><option>Brisbane</option><option>Gold Coast</option></select></div>
     </div>
-    <div class="qf">
+    <div class="qf"><label data-lang-inline="zh">搬出详细地址</label><label data-lang-inline="en">Pickup Address</label><label data-lang-inline="ko">출발 주소</label><label data-lang-inline="vi">Địa chỉ đi</label><input id="qFromAddr" type="text" placeholder="街道门牌 / Street address"></div><div class="qf"><label data-lang-inline="zh">搬入详细地址</label><label data-lang-inline="en">Delivery Address</label><label data-lang-inline="ko">도착 주소</label><label data-lang-inline="vi">Địa chỉ đến</label><input id="qToAddr" type="text" placeholder="街道门牌 / Street address"></div><div class="qf">
       <label data-lang-inline="zh">预计搬家日期</label><label data-lang-inline="en">Moving Date</label><label data-lang-inline="ko">이사 예정일</label><label data-lang-inline="vi">Ngày chuyển</label>
       <input type="date" id="qDate">
     </div>
@@ -484,9 +484,9 @@ setInterval(function(){goSlide((current+1)%slides.length)},5000);
 <script>
 function sendQuote(){
  var g=function(id){var e=document.getElementById(id);return e?e.value.trim():'';};
- var name=g('qName'),phone=g('qPhone'),from=g('qFrom'),to=g('qTo'),date=g('qDate'),type=g('qType');
+ var name=g('qName'),phone=g('qPhone'),from=g('qFrom'),fromA=g('qFromAddr'),to=g('qTo'),toA=g('qToAddr'),date=g('qDate'),type=g('qType');
  if(!name||!phone){alert('请填写姓名和联系电话 / Please enter your name & phone');return;}
- var body='[Happy Removals 搬家询价]\n姓名 Name: '+name+'\n电话 Phone: '+phone+'\n从 From: '+from+'\n到 To: '+to+'\n日期 Date: '+(date||'-')+'\n类型 Type: '+type;
+ var body='[Happy Removals 搬家询价]\n姓名 Name: '+name+'\n电话 Phone: '+phone+'\n从 From: '+from+(fromA?' - '+fromA:'')+'\n到 To: '+to+(toA?' - '+toA:'')+'\n日期 Date: '+(date||'-')+'\n类型 Type: '+type;
  window.location.href='sms:0433296767?&body='+encodeURIComponent(body);
 }
 </script>
